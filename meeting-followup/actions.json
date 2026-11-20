@@ -1,0 +1,68 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/copilot/declarative-agent/actions.schema.json",
+  "version": "1.0",
+  "actions": [
+    {
+      "id": "FollowUpNonResponders",
+      "name": "Follow Up Non Responders",
+      "description": "Find attendees who have not responded to a meeting invitation, create or reuse a Teams follow-up channel, add the attendees, send reminder messages, and return a meeting summary.",
+      "operationId": "FollowUpNonResponders",
+      "inputs": {
+        "meetingSubject": {
+          "type": "string",
+          "description": "Meeting subject to search for."
+        },
+        "daysAhead": {
+          "type": "integer",
+          "description": "Number of days ahead to search for meetings.",
+          "default": 7
+        },
+        "createChannel": {
+          "type": "boolean",
+          "description": "Whether to create or reuse a Teams follow-up channel.",
+          "default": true
+        }
+      },
+      "outputs": {
+        "meeting": {
+          "type": "string"
+        },
+        "accepted": {
+          "type": "integer"
+        },
+        "tentative": {
+          "type": "integer"
+        },
+        "declined": {
+          "type": "integer"
+        },
+        "noResponse": {
+          "type": "integer"
+        },
+        "channelName": {
+          "type": "string"
+        },
+        "usersAdded": {
+          "type": "integer"
+        },
+        "remindersSent": {
+          "type": "integer"
+        },
+        "nonResponders": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
