@@ -1,0 +1,25 @@
+{
+  "status": "completed",
+  "message": "Follow-up completed successfully.",
+  "meetingSubject": "Architecture Review",
+  "meetingStart": "2026-11-24T15:00:00Z",
+  "accepted": 10,
+  "tentative": 1,
+  "declined": 2,
+  "noResponse": 2,
+  "channelName": "Architecture Review - Pending Responses",
+  "usersAdded": 2,
+  "remindersSent": 1,
+  "nonResponders": [
+    {
+      "name": "Alex Morgan",
+      "email": "alex.morgan@example.com"
+    },
+    {
+      "name": "Taylor Chen",
+      "email": "taylor.chen@example.com"
+    }
+  ],
+  "followUpFailures": [],
+  "errorCode": ""
+}

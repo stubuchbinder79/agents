@@ -4,27 +4,37 @@
   "actions": [
     {
       "id": "FollowUpNonResponders",
-      "name": "Follow Up Non Responders",
-      "description": "Find attendees who have not responded to a meeting invitation, create or reuse a Teams follow-up channel, add the attendees, send reminder messages, and return a meeting summary.",
+      "name": "Follow Up Non-Responders",
+      "description": "Find a single upcoming meeting organized by the current user, summarize attendee responses, and optionally create or reuse a private Teams channel and remind only attendees whose latest response is none.",
       "operationId": "FollowUpNonResponders",
       "inputs": {
         "meetingSubject": {
           "type": "string",
-          "description": "Meeting subject to search for."
+          "description": "Required. A distinctive part of the meeting subject."
         },
         "daysAhead": {
           "type": "integer",
-          "description": "Number of days ahead to search for meetings.",
+          "description": "Number of days ahead to search, from 1 through 365.",
           "default": 7
         },
         "createChannel": {
           "type": "boolean",
-          "description": "Whether to create or reuse a Teams follow-up channel.",
-          "default": true
+          "description": "Set true only when the user explicitly requests follow-up communication.",
+          "default": false
         }
       },
       "outputs": {
-        "meeting": {
+        "status": {
+          "type": "string",
+          "description": "completed, noMeetingFound, multipleMeetingsFound, noNonResponders, followUpDisabled, partial, or failed."
+        },
+        "message": {
+          "type": "string"
+        },
+        "meetingSubject": {
+          "type": "string"
+        },
+        "meetingStart": {
           "type": "string"
         },
         "accepted": {
@@ -61,6 +71,26 @@
               }
             }
           }
+        },
+        "followUpFailures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "reason": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "errorCode": {
+          "type": "string"
         }
       }
     }

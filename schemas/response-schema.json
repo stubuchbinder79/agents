@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FollowUpNonRespondersResponse",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "completed",
+        "noMeetingFound",
+        "multipleMeetingsFound",
+        "noNonResponders",
+        "followUpDisabled",
+        "partial",
+        "failed"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "meetingSubject": {
+      "type": "string"
+    },
+    "meetingStart": {
+      "type": "string",
+      "description": "ISO 8601 date-time, or an empty string when no single meeting was selected."
+    },
+    "accepted": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "tentative": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "declined": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "noResponse": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "channelName": {
+      "type": "string"
+    },
+    "usersAdded": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "remindersSent": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "nonResponders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "followUpFailures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "email",
+          "reason"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "errorCode": {
+      "type": "string",
+      "description": "Empty unless status is failed or partial."
+    }
+  },
+  "required": [
+    "status",
+    "message",
+    "meetingSubject",
+    "meetingStart",
+    "accepted",
+    "tentative",
+    "declined",
+    "noResponse",
+    "channelName",
+    "usersAdded",
+    "remindersSent",
+    "nonResponders",
+    "followUpFailures",
+    "errorCode"
+  ],
+  "additionalProperties": false
+}

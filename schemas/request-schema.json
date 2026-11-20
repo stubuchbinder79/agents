@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FollowUpNonRespondersRequest",
+  "type": "object",
+  "properties": {
+    "meetingSubject": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A distinctive part of the meeting subject."
+    },
+    "daysAhead": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 365,
+      "default": 7
+    },
+    "createChannel": {
+      "type": "boolean",
+      "default": false,
+      "description": "Must be true only for an explicitly requested follow-up."
+    }
+  },
+  "required": [
+    "meetingSubject"
+  ],
+  "additionalProperties": false
+}
